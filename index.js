@@ -37,7 +37,6 @@ console.log(createMenuItem('Pumpkin Pie', 3, 'Dessert'));
 console.log(createMenuItem('Pumpkin Crumpet', 12, 'Dessert'));
 
 
-
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the 
 burger object below that automatically calculates price depending on the a string received as a parameter. 
@@ -54,7 +53,10 @@ const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  
+  discount: function(str) {
+    if (str === 'teacher' || str === 'student') return this.price - (this.price * 0.25);
+    else return this.price - (this.price * 0.1);
+  }
 }
 
 
