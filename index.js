@@ -16,11 +16,7 @@ The function should:
 */
 
 function createMenuItem(name, price, category) {
-    return {
-      'name': name,
-      'price': price,
-      'category': category
-    }
+    return { name, price, category }
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -96,7 +92,7 @@ Write a function that creates an object with name, rating, feedback, add the new
 */
 
 function addReview(array, name, rating, feedback) {
-  array.push({ 'name': name, 'rating': rating, 'feedback': feedback });
+  array.push({ name, rating, feedback });
   return array;
 }
 
@@ -131,9 +127,9 @@ Use the getLastReview function below to do the following:
 
 
 function getLastReview(array) {
-  const name = array[7].name;
-  const rating = array[7].rating;
-  const feedback = array[7].feedback;
+  const name = array[array.length - 1].name;
+  const rating = array[array.length - 1].rating;
+  const feedback = array[array.length - 1].feedback;
   return `${name} gave the restaurant a ${rating} star review, and their feedback was: ${feedback}`;
 } 
 
@@ -154,13 +150,15 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(array, rating) {
-   const newArray = [];
-    for (let key in array) {
-      if (array[key].rating >= rating && array[key].rating < rating+1) newArray.push(array[key]);
-    }
-    return newArray;
-  }
+  function getReviewByRating(array, rating) {
+    const newArray = [];
+     for (let i = 0; i < array.length; i++) {
+       if (array[i].rating >= rating && array[i].rating < rating+1) {
+         newArray.push(array[i]);
+       }
+     }
+     return newArray;
+   }
 
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
@@ -178,8 +176,8 @@ Use the getLongReviews function below to do the following:
 
 function getLongReviews(array) {
   const newArray = [];
-    for (let key in array) {
-      if (array[key].feedback.split(' ').length > 15) newArray.push(array[key]);
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].feedback.split(' ').length > 15) newArray.push(array[i]);
     }
     return newArray;
   }
